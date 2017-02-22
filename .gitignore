@@ -1,0 +1,7 @@
+*.rb
+*.txt
+.*/
+!task1.rb
+!array.rb
+!itterators.rb
+!string.rb
