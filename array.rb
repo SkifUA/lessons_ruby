@@ -18,14 +18,18 @@ p "After MAX element is #{ansver1} elements."
 # task 2
 p "TASK 2"
 tester = Array.new(test_array)
-count = 2
 ansver2 = Array.new
 
-loop = 0
-while loop < count do
-  ansver2 << tester.index(tester.min)
+while true
+  p "Pleas print max number"
+  count = gets.chomp.to_i
+  break if count.between?(1, tester.size)
+  p "Number must be between 1 and #{tester.size}"
+end
+
+(1..count).each do
+  ansver2.push(tester.index(tester.min))
   tester[tester.index(tester.min)] = tester.max
-  loop +=1
 end
 
 p "Position 2 min elements: " + ansver2.join(', ')
@@ -34,7 +38,7 @@ p "Position 2 min elements: " + ansver2.join(', ')
 puts "TASK 3"
 tester = Array.new(test_array)
 uniqu = tester.uniq
-an_uniq = (tester.size - uniqu.size) *2
+an_uniq = (tester.size - uniqu.size)
 
 p "Not unique elements is #{an_uniq}"
 
@@ -43,11 +47,11 @@ p "Not unique elements is #{an_uniq}"
 p "TASK 4"
 tester = Array.new(test_array)
 
-min_element_index, max_element_index = tester.index(tester.min),  tester.index(tester.max)
+min_e_ind, max_e_ind = tester.index(tester.min),  tester.index(tester.max)
 
-min_element_index, max_element_index = max_element_index, min_element_index if min_element_index > max_element_index
+min_e_ind, max_e_ind = max_e_ind, min_e_ind if min_e_ind > max_e_ind
 
-tester[min_element_index + 1...max_element_index] = tester[min_element_index + 1...max_element_index].reverse
+tester[min_e_ind + 1...max_e_ind] = tester[min_e_ind + 1...max_e_ind].reverse
 
 p "Original array #{test_array.join(', ')}"
 p "Result array #{tester.join(', ')}"
@@ -56,7 +60,7 @@ p "Result array #{tester.join(', ')}"
 p "TASK 5"
 tester = Array.new(test_array)
 
-(0...tester.index(tester.min)).each { tester << tester.shift}
+(0...tester.index(tester.min)).each { tester.push(tester.shift) }
 
 p "move elements after min to end #{tester.join(', ')}"
 
@@ -72,9 +76,10 @@ p "change min and max elements #{tester.join(', ')}"
 # task 7
 p "TASK 7"
 tester = Array.new(test_array)
+
 p "first #{tester.inspect}"
 p "second #{second_array}"
-p "do not match elements #{(tester - second_array) | (second_array - tester)}"
+p "not match elements #{(tester - second_array) | (second_array - tester)}"
 p "match elements #{tester & second_array}"
 
 # task 8
